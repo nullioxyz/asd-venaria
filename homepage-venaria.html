@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASD Venaria Reale — Dal 1947</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde: #3b8a21;
+      --verde-dark: #2d6b19;
+      --arancio: #f37331;
+      --nero: #0a0a0a;
+      --nero2: #111111;
+      --nero3: #1a1a1a;
+      --grigio: #2a2a2a;
+      --grigio-light: #888;
+      --bianco: #ffffff;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--nero);
+      color: var(--bianco);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 70px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.6));
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-logo-text span:first-child {
+      font-family: var(--font-display);
+      font-size: 19px;
+      letter-spacing: 2px;
+      color: var(--bianco);
+      line-height: 1;
+    }
+
+    .nav-logo-text span:last-child {
+      font-size: 10px;
+      color: var(--grigio-light);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--arancio); }
+
+    .nav-cta {
+      background: var(--verde);
+      color: white !important;
+      padding: 9px 20px;
+      border-radius: 3px;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover { background: var(--verde-dark); color: white !important; }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('image1.jpg');
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.38);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(59,138,33,0.08) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.65) 100%);
+    }
+
+    .hero-stripe {
+      position: absolute;
+      left: 0; right: 0;
+      bottom: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--verde) 0%, var(--arancio) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 110px;
+      height: auto;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.7));
+    }
+
+    .hero-founded {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--arancio);
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 12vw, 150px);
+      line-height: 0.9;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--bianco);
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--verde);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 2.5vw, 32px);
+      letter-spacing: 10px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--verde);
+      color: white;
+      text-decoration: none;
+      padding: 15px 36px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--verde-dark); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: white;
+      text-decoration: none;
+      padding: 15px 36px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-outline:hover { border-color: var(--arancio); color: var(--arancio); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.4), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── SECTIONS COMMON ─── */
+    section { padding: 90px 40px; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--bianco);
+    }
+
+    .section-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--verde);
+      text-decoration: none;
+      border-bottom: 1px solid var(--verde);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .section-link:hover { color: var(--arancio); border-color: var(--arancio); }
+
+    .max-w { max-width: 1280px; margin: 0 auto; }
+
+    /* ─── STAGIONE BANNER ─── */
+    #stagione {
+      background: var(--verde);
+      padding: 32px 40px;
+    }
+
+    .stagione-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stagione-text {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 2px;
+    }
+
+    .stagione-sub {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+    }
+
+    .stagione-btn {
+      background: white;
+      color: var(--verde);
+      text-decoration: none;
+      padding: 14px 32px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .stagione-btn:hover { opacity: 0.9; }
+
+    /* ─── SQUADRE ─── */
+    #squadre { background: var(--nero2); }
+
+    .squadre-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .squadra-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      cursor: pointer;
+    }
+
+    .squadra-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.5) saturate(0.8);
+      transition: filter 0.4s, transform 0.4s;
+    }
+
+    .squadra-card:hover .squadra-card-img {
+      filter: brightness(0.65) saturate(1);
+      transform: scale(1.05);
+    }
+
+    .squadra-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+    }
+
+    .squadra-number {
+      font-family: var(--font-display);
+      font-size: 80px;
+      line-height: 1;
+      color: rgba(255,255,255,0.08);
+      position: absolute;
+      top: 20px;
+      right: 24px;
+    }
+
+    .squadra-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--arancio);
+      margin-bottom: 8px;
+    }
+
+    .squadra-name {
+      font-family: var(--font-display);
+      font-size: 36px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--bianco);
+      line-height: 1;
+    }
+
+    .squadra-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .squadra-arrow {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--verde);
+      text-decoration: none;
+    }
+
+    /* ─── MAGLIE ─── */
+    #maglie {
+      background: var(--nero);
+      padding: 90px 0 120px;
+    }
+
+    .maglie-header {
+      padding: 0 40px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .maglie-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .maglia-panel {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .maglia-img-wrap {
+      background: var(--nero3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 40px 40px;
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .maglia-panel:hover .maglia-img-wrap { background: #222; }
+
+    .maglia-bg-num {
+      position: absolute;
+      font-family: var(--font-display);
+      font-size: 220px;
+      color: rgba(255,255,255,0.03);
+      bottom: -20px;
+      right: -10px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .maglia-img {
+      width: 200px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.4s;
+      filter: drop-shadow(0 12px 32px rgba(0,0,0,0.5));
+    }
+
+    .maglia-panel:hover .maglia-img { transform: translateY(-8px) scale(1.04); }
+
+    .maglia-info {
+      background: var(--nero2);
+      padding: 28px 32px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.3s;
+      text-align: center;
+    }
+
+    .maglia-panel:nth-child(1) .maglia-info { border-color: var(--verde); }
+    .maglia-panel:nth-child(2) .maglia-info { border-color: #cc2222; }
+    .maglia-panel:nth-child(3) .maglia-info { border-color: #444; }
+
+    .maglia-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .maglia-panel:nth-child(1) .maglia-badge { background: rgba(59,138,33,0.15); color: var(--verde); }
+    .maglia-panel:nth-child(2) .maglia-badge { background: rgba(204,34,34,0.15); color: #ee4444; }
+    .maglia-panel:nth-child(3) .maglia-badge { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
+
+    .maglia-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--bianco);
+      margin-bottom: 6px;
+    }
+
+    .maglia-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    /* ─── 5x1000 ─── */
+    #crescere {
+      background: var(--nero2);
+      padding: 0;
+    }
+
+    .crescere-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 380px;
+    }
+
+    .crescere-left {
+      padding: 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .crescere-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--arancio);
+      margin-bottom: 16px;
+    }
+
+    .crescere-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 72px);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--bianco);
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+
+    .crescere-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+
+    .crescere-cf-box {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-left: 4px solid var(--verde);
+      padding: 20px 28px;
+      border-radius: 3px;
+      max-width: fit-content;
+    }
+
+    .crescere-cf-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .crescere-cf-number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      letter-spacing: 4px;
+      color: var(--bianco);
+      line-height: 1;
+    }
+
+    .crescere-cf-hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+    }
+
+    .crescere-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .crescere-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.55) saturate(0.7);
+    }
+
+    .crescere-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg, transparent 40%, var(--nero2) 100%);
+    }
+
+    /* ─── PROSSIME PARTITE ─── */
+    #partite { background: var(--nero); }
+
+    .partite-tabs {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 12px;
+    }
+
+    .partite-tab {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--grigio-light);
+      cursor: pointer;
+      padding-bottom: 12px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -13px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .partite-tab.active { color: var(--bianco); border-color: var(--verde); }
+
+    .partite-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .partita-card {
+      background: var(--nero3);
+      padding: 28px 24px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .partita-card:first-child { border-color: var(--verde); background: var(--verde-dark); }
+    .partita-card:hover { border-color: var(--arancio); }
+
+    .partita-competizione {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grigio-light);
+      margin-bottom: 16px;
+    }
+
+    .partita-data {
+      font-family: var(--font-display);
+      font-size: 52px;
+      letter-spacing: 1px;
+      line-height: 1;
+      color: var(--bianco);
+      margin-bottom: 8px;
+    }
+
+    .partita-ora {
+      font-size: 12px;
+      color: var(--grigio-light);
+      margin-bottom: 20px;
+    }
+
+    .partita-squadre {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .partita-team {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .partita-team.home { color: var(--arancio); }
+    .partita-team.away { color: rgba(255,255,255,0.6); }
+
+    .partita-luogo {
+      font-size: 11px;
+      color: var(--grigio-light);
+      margin-top: 12px;
+    }
+
+    /* ─── STORIA ─── */
+    #storia {
+      background: var(--nero2);
+      padding: 90px 40px;
+    }
+
+    .storia-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .storia-media {
+      position: relative;
+    }
+
+    .storia-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .storia-year-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--verde);
+      color: white;
+      padding: 20px 28px;
+      border-radius: 4px;
+    }
+
+    .storia-year-badge .yr {
+      font-family: var(--font-display);
+      font-size: 48px;
+      line-height: 1;
+      display: block;
+    }
+
+    .storia-year-badge .yr-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .storia-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--arancio);
+      margin-bottom: 16px;
+    }
+
+    .storia-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4vw, 60px);
+      line-height: 1;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--bianco);
+      margin-bottom: 24px;
+    }
+
+    .storia-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .storia-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .storia-stat-number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      letter-spacing: 1px;
+      color: var(--verde);
+      line-height: 1;
+    }
+
+    .storia-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── PARTNER ─── */
+    #partner { background: var(--nero); }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+
+    .partner-card {
+      background: #ffffff;
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 130px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      z-index: 1;
+      position: relative;
+    }
+
+    .partner-logo {
+      width: 100%;
+      max-height: 64px;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.2s;
+    }
+
+    .partner-card:hover .partner-logo { transform: scale(1.05); }
+
+    .partner-cat {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.35);
+    }
+
+    /* ─── CONTATTI ─── */
+    .contatti-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .contatti-left .section-title { color: white; }
+
+    .contatti-left p {
+      margin-top: 16px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+
+    .contatti-items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contatti-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contatti-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #ffffff;
+    }
+
+    .contatti-info { display: flex; flex-direction: column; }
+
+    .contatti-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+    }
+
+    .contatti-value { font-size: 14px; font-weight: 600; color: white; }
+    .contatti-value a { color: white; text-decoration: none; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--nero);
+      border-top: 4px solid var(--verde);
+    }
+
+    .footer-tagline {
+      padding: 60px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-tagline-text {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 10vw, 130px);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.07);
+      max-width: 1280px;
+      margin: 0 auto;
+      line-height: 0.9;
+    }
+
+    .footer-tagline-text span { color: var(--verde); }
+
+    .footer-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 56px 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand-logo {
+      height: 72px;
+      width: auto;
+      margin-bottom: 16px;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    }
+
+    .footer-brand-sub {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grigio-light);
+      margin-bottom: 20px;
+    }
+
+    .footer-brand-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .footer-social-btn {
+      width: 36px;
+      height: 36px;
+      background: var(--grigio);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .footer-social-btn:hover { background: var(--verde); color: white; }
+
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--bianco);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--arancio); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+
+      .squadre-grid { grid-template-columns: 1fr; }
+      .maglie-grid { grid-template-columns: 1fr; }
+      .maglie-header { padding: 0 20px 32px; }
+      .crescere-inner { grid-template-columns: 1fr; }
+      .crescere-right { display: none; }
+      .crescere-left { padding: 56px 32px; }
+      .partite-grid { grid-template-columns: 1fr 1fr; }
+      .partner-grid { grid-template-columns: repeat(3, 1fr); }
+      .storia-inner { grid-template-columns: 1fr; }
+      .storia-year-badge { display: none; }
+      .contatti-inner { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      #stagione { padding: 24px 20px; }
+      .stagione-inner { flex-direction: column; gap: 16px; }
+    }
+
+    @media (max-width: 600px) {
+      .partite-grid { grid-template-columns: 1fr; }
+      .partner-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-main { grid-template-columns: 1fr; }
+    }
+
+    /* ─── HAMBURGER ─── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 900px) { .nav-hamburger { display: flex; } }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,10,0.98);
+      z-index: 99;
+      padding: 40px 24px;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-drawer.open { display: flex; }
+
+    .nav-drawer a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 24px;
+      font-family: var(--font-display);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+
+    .nav-drawer a:hover { color: var(--verde); }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="ASD Venaria Reale">
+    <div class="nav-logo-text">
+      <span>ASD Venaria Reale</span>
+      <span>Calcio — Dal 1947</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#squadre">Squadre</a></li>
+    <li><a href="#maglie">Maglie</a></li>
+    <li><a href="#partite">Calendario</a></li>
+    <li><a href="#storia">Storia</a></li>
+    <li><a href="#partner">Partner</a></li>
+    <li><a href="#contatti" class="nav-cta">Contatti</a></li>
+  </ul>
+
+  <div class="nav-hamburger" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="nav-drawer" id="drawer">
+  <a href="#squadre" onclick="toggleDrawer()">Squadre</a>
+  <a href="#maglie" onclick="toggleDrawer()">Maglie</a>
+  <a href="#partite" onclick="toggleDrawer()">Calendario</a>
+  <a href="#storia" onclick="toggleDrawer()">Storia</a>
+  <a href="#partner" onclick="toggleDrawer()">Partner</a>
+  <a href="#contatti" onclick="toggleDrawer()">Contatti</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <p class="hero-founded">Fondato nel 1947 · Venaria Reale (TO)</p>
+    <h1 class="hero-title">
+      ASD<br>
+      <span>Venaria Reale</span>
+    </h1>
+    <p class="hero-subtitle">Calcio · Passione · Territorio</p>
+    <div class="hero-actions">
+      <a href="#squadre" class="btn-primary">Le nostre squadre</a>
+      <a href="#storia" class="btn-outline">La nostra storia</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">Scopri</div>
+</section>
+
+<!-- ─── STAGIONE BANNER ─── -->
+<div id="stagione">
+  <div class="stagione-inner">
+    <div>
+      <div class="stagione-text">STAGIONE 2026–27</div>
+      <div class="stagione-sub">Prima Categoria · Girone A · Piemonte</div>
+    </div>
+    <a href="#partite" class="stagione-btn">Vedi il Calendario</a>
+  </div>
+</div>
+
+<!-- ─── SQUADRE ─── -->
+<section id="squadre" style="padding:0; background:var(--nero2);">
+  <div style="padding:90px 40px 32px; max-width:1280px; margin:0 auto;">
+    <div class="section-header">
+      <h2 class="section-title">Le Nostre Squadre</h2>
+      <a href="#" class="section-link">Tutte le squadre →</a>
+    </div>
+  </div>
+
+  <div class="squadre-grid">
+    <div class="squadra-card">
+      <img class="squadra-card-img" src="primasquadra.jpg" alt="Prima Squadra">
+      <div class="squadra-overlay">
+        <div class="squadra-number">1</div>
+        <div class="squadra-label">Prima Categoria · Girone A</div>
+        <div class="squadra-name">Prima<br>Squadra</div>
+        <div class="squadra-desc">La squadra principale del club. Prima Categoria, Girone A Piemonte.</div>
+        <a href="#" class="squadra-arrow">Vedi la rosa →</a>
+      </div>
+    </div>
+
+    <div class="squadra-card">
+      <img class="squadra-card-img" src="giovani.jpg" alt="Settore Giovanile">
+      <div class="squadra-overlay">
+        <div class="squadra-number">2</div>
+        <div class="squadra-label">Under 17 · Under 15 · Under 13</div>
+        <div class="squadra-name">Settore<br>Giovanile</div>
+        <div class="squadra-desc">Formiamo i campioni di domani. Dai Giovanissimi agli Allievi.</div>
+        <a href="#" class="squadra-arrow">Scopri →</a>
+      </div>
+    </div>
+
+    <div class="squadra-card">
+      <img class="squadra-card-img" src="scuola.jpg" alt="Scuola Calcio">
+      <div class="squadra-overlay">
+        <div class="squadra-number">3</div>
+        <div class="squadra-label">5–12 anni</div>
+        <div class="squadra-name">Scuola<br>Calcio</div>
+        <div class="squadra-desc">Il calcio inizia qui. Un ambiente sicuro e divertente per i più piccoli.</div>
+        <a href="#" class="squadra-arrow">Iscriviti →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAGLIE ─── -->
+<section id="maglie">
+  <div class="maglie-header">
+    <h2 class="section-title">Le Nostre Maglie</h2>
+    <a href="#" class="section-link">Stagione 2026–27</a>
+  </div>
+
+  <div class="maglie-grid">
+    <!-- Kit Casa -->
+    <div class="maglia-panel">
+      <div class="maglia-img-wrap">
+        <div class="maglia-bg-num">1</div>
+        <img class="maglia-img" src="maglia_Venaria_2024-2.png" alt="Kit Casa">
+      </div>
+      <div class="maglia-info">
+        <span class="maglia-badge">Kit Casa</span>
+        <div class="maglia-name">Maglia Verde</div>
+        <div class="maglia-desc">Il kit ufficiale da casa. Verde e arancio, i colori della nostra storia.</div>
+      </div>
+    </div>
+
+    <!-- Kit Portiere -->
+    <div class="maglia-panel">
+      <div class="maglia-img-wrap">
+        <div class="maglia-bg-num">2</div>
+        <img class="maglia-img" src="maglia_Venaria__rossa_2024.png" alt="Kit Portiere">
+      </div>
+      <div class="maglia-info">
+        <span class="maglia-badge">Kit Portiere</span>
+        <div class="maglia-name">Maglia Rossa</div>
+        <div class="maglia-desc">Il kit ufficiale del portiere. Rosso pieno con i dettagli del club.</div>
+      </div>
+    </div>
+
+    <!-- Kit Trasferta -->
+    <div class="maglia-panel">
+      <div class="maglia-img-wrap">
+        <div class="maglia-bg-num">3</div>
+        <img class="maglia-img" src="maglia_Venaria_nera_2024.png" alt="Kit Trasferta">
+      </div>
+      <div class="maglia-info">
+        <span class="maglia-badge">Kit Trasferta</span>
+        <div class="maglia-name">Maglia Nera</div>
+        <div class="maglia-desc">Il kit da trasferta. Nero con dettagli verdi e arancio del club.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AIUTACI A CRESCERE (5×1000) ─── -->
+<section id="crescere" style="padding:0;">
+  <div class="crescere-inner">
+    <div class="crescere-left">
+      <div class="crescere-eyebrow">Sostieni il Club</div>
+      <h2 class="crescere-title">Aiutaci<br>a Crescere</h2>
+      <p class="crescere-sub">
+        Destina il <strong>5&times;1000</strong> all'ASD Venaria Reale: è gratuito per te, ma fa una grande differenza per noi. Basta indicare il nostro codice fiscale nella tua dichiarazione dei redditi.
+      </p>
+      <div class="crescere-cf-box">
+        <div class="crescere-cf-label">Codice Fiscale</div>
+        <div class="crescere-cf-number">97626050013</div>
+        <div class="crescere-cf-hint">Da inserire nella dichiarazione dei redditi · Sezione "Sport"</div>
+      </div>
+    </div>
+
+    <div class="crescere-right">
+      <img src="venaria_training_center.jpg" alt="ASD Venaria Reale Training Center">
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROSSIME PARTITE ─── -->
+<section id="partite">
+  <div class="max-w">
+    <div class="section-header">
+      <h2 class="section-title">Prossime Partite</h2>
+      <a href="#" class="section-link">Calendario completo →</a>
+    </div>
+
+    <div class="partite-tabs">
+      <div class="partite-tab active">Prima Squadra</div>
+      <div class="partite-tab">Under 17</div>
+      <div class="partite-tab">Under 15</div>
+      <div class="partite-tab">Scuola Calcio</div>
+    </div>
+
+    <div class="partite-grid">
+      <div class="partita-card">
+        <div class="partita-competizione">Prima Categoria · Giornata 1</div>
+        <div class="partita-data">14 SET</div>
+        <div class="partita-ora">15:30 · Campo Comunale</div>
+        <div class="partita-squadre">
+          <div class="partita-team home">Venaria Reale</div>
+          <div class="partita-team away">Pro Collegno</div>
+        </div>
+        <div class="partita-luogo">📍 Via San Marchese, 27</div>
+      </div>
+      <div class="partita-card">
+        <div class="partita-competizione">Prima Categoria · Giornata 2</div>
+        <div class="partita-data">21 SET</div>
+        <div class="partita-ora">15:30 · Trasferta</div>
+        <div class="partita-squadre">
+          <div class="partita-team away">Alpignano Calcio</div>
+          <div class="partita-team home">Venaria Reale</div>
+        </div>
+        <div class="partita-luogo">📍 Campo Alpignano</div>
+      </div>
+      <div class="partita-card">
+        <div class="partita-competizione">Prima Categoria · Giornata 3</div>
+        <div class="partita-data">28 SET</div>
+        <div class="partita-ora">15:30 · Campo Comunale</div>
+        <div class="partita-squadre">
+          <div class="partita-team home">Venaria Reale</div>
+          <div class="partita-team away">Druento FC</div>
+        </div>
+        <div class="partita-luogo">📍 Via San Marchese, 27</div>
+      </div>
+      <div class="partita-card">
+        <div class="partita-competizione">Prima Categoria · Giornata 4</div>
+        <div class="partita-data">05 OTT</div>
+        <div class="partita-ora">15:00 · Trasferta</div>
+        <div class="partita-squadre">
+          <div class="partita-team away">Lascaris Calcio</div>
+          <div class="partita-team home">Venaria Reale</div>
+        </div>
+        <div class="partita-luogo">📍 Campo Lascaris</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STORIA ─── -->
+<section id="storia" style="padding:0; background:var(--nero2);">
+  <div class="storia-inner" style="max-width:1280px; margin:0 auto; padding:90px 40px;">
+    <div class="storia-media">
+      <img class="storia-img" src="image1.jpeg" alt="ASD Venaria Reale">
+      <div class="storia-year-badge">
+        <span class="yr">1947</span>
+        <span class="yr-label">Anno di fondazione</span>
+      </div>
+    </div>
+
+    <div class="storia-content">
+      <div class="storia-eyebrow">La nostra identità</div>
+      <h2 class="storia-title">Una storia lunga oltre 75 anni</h2>
+      <p class="storia-text">
+        L'ASD Venaria Reale nasce nel 1947 nel cuore di Venaria Reale, città piemontese alle porte di Torino, famosa per la sua Reggia patrimonio UNESCO. Da allora il club ha accompagnato generazioni di giovani calciatori, diventando un punto di riferimento per tutta la comunità locale.
+        <br><br>
+        Con colori verde e arancio, la Venaria Reale esprime valori di appartenenza, rispetto e passione sportiva. Il campo di Via San Marchese è la casa di centinaia di atleti, dalla Scuola Calcio fino alla Prima Squadra.
+      </p>
+
+      <div class="storia-stats">
+        <div>
+          <div class="storia-stat-number">1947</div>
+          <div class="storia-stat-label">Anno fondazione</div>
+        </div>
+        <div>
+          <div class="storia-stat-number">300+</div>
+          <div class="storia-stat-label">Atleti tesserati</div>
+        </div>
+        <div>
+          <div class="storia-stat-number">7+</div>
+          <div class="storia-stat-label">Squadre attive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PARTNER ─── -->
+<section id="partner">
+  <div class="max-w">
+    <div class="section-header">
+      <h2 class="section-title">I Nostri Partner</h2>
+      <a href="#" class="section-link">Diventa partner →</a>
+    </div>
+
+    <div class="partner-grid">
+      <div class="partner-card">
+        <img class="partner-logo" src="partner-esso.png" alt="Esso">
+        <div class="partner-cat">Main Sponsor</div>
+      </div>
+      <div class="partner-card">
+        <img class="partner-logo" src="partner.shiso.png" alt="Shiso Fusion">
+        <div class="partner-cat">Food &amp; Beverage</div>
+      </div>
+      <div class="partner-card">
+        <img class="partner-logo" src="partner-alke.png" alt="Alkè">
+        <div class="partner-cat">Abbigliamento</div>
+      </div>
+      <div class="partner-card">
+        <img class="partner-logo" src="partner-cima.png" alt="Cima Ascensori">
+        <div class="partner-cat">Impianti</div>
+      </div>
+      <div class="partner-card">
+        <img class="partner-logo" src="partner-cecchi.png" alt="Cecchi">
+        <div class="partner-cat">Partner</div>
+      </div>
+      <div class="partner-card">
+        <img class="partner-logo" src="partner-gerace.png" alt="Gerace">
+        <div class="partner-cat">Partner</div>
+      </div>
+      <div class="partner-card">
+        <img class="partner-logo" src="partner-san-giacomo.png" alt="San Giacomo">
+        <div class="partner-cat">Partner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTATTI ─── -->
+<section id="contatti" style="background:var(--verde); padding:80px 40px;">
+  <div class="contatti-inner">
+    <div class="contatti-left">
+      <h2 class="section-title">Contattaci</h2>
+      <p>Vuoi saperne di più sulle nostre squadre, iscrivere tuo figlio alla Scuola Calcio o diventare partner del club? Siamo a tua disposizione.</p>
+      <div class="hero-actions" style="margin-top:32px; justify-content:flex-start;">
+        <a href="mailto:segreteria@venariacalcio.com" class="btn-outline" style="border-color:rgba(255,255,255,0.5); color:white;">Scrivici una email</a>
+      </div>
+    </div>
+
+    <div class="contatti-items">
+      <div class="contatti-item">
+        <div class="contatti-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="contatti-info">
+          <div class="contatti-label">Indirizzo</div>
+          <div class="contatti-value">Via San Marchese, 27<br>10078 Venaria Reale (TO)</div>
+        </div>
+      </div>
+      <div class="contatti-item">
+        <div class="contatti-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="contatti-info">
+          <div class="contatti-label">Telefono</div>
+          <div class="contatti-value"><a href="tel:+393397985515">+39 339 798 5515</a></div>
+        </div>
+      </div>
+      <div class="contatti-item">
+        <div class="contatti-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contatti-info">
+          <div class="contatti-label">Email</div>
+          <div class="contatti-value"><a href="mailto:segreteria@venariacalcio.com">segreteria@venariacalcio.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INNO ─── -->
+<section id="inno" style="padding:0; position:relative; overflow:hidden; background:#0a0a0a;">
+  <!-- Sfondo sfocato con foto squadra -->
+  <div style="position:absolute; inset:0; background-image:url('image1.jpeg'); background-size:cover; background-position:center; filter:brightness(0.18) saturate(0.5);"></div>
+  <!-- Overlay gradiente -->
+  <div style="position:absolute; inset:0; background:radial-gradient(ellipse 70% 80% at 50% 50%, rgba(59,138,33,0.12) 0%, transparent 70%);"></div>
+
+  <div style="position:relative; z-index:2; max-width:760px; margin:0 auto; padding:100px 40px; text-align:center;">
+    <!-- Logo -->
+    <img src="logo.png" alt="ASD Venaria Reale" style="width:80px; height:auto; margin-bottom:32px; filter:drop-shadow(0 4px 20px rgba(0,0,0,0.8));">
+
+    <div style="font-size:10px; font-weight:700; letter-spacing:5px; text-transform:uppercase; color:var(--arancio); margin-bottom:12px;">ASD Venaria Reale</div>
+    <h2 style="font-family:var(--font-display); font-size:clamp(48px,8vw,96px); letter-spacing:2px; text-transform:uppercase; color:#fff; line-height:0.9; margin-bottom:8px;">Inno<br><span style="color:var(--verde);">Ufficiale</span></h2>
+
+    <!-- Player -->
+    <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:100px; padding:20px 36px; display:flex; align-items:center; gap:24px; max-width:560px; margin:0 auto 40px;">
+
+      <!-- Play button -->
+      <button id="playBtn" onclick="togglePlay()" style="width:56px; height:56px; border-radius:50%; background:var(--verde); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.2s, transform 0.15s;">
+        <svg id="iconPlay" width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        <svg id="iconPause" width="20" height="20" viewBox="0 0 24 24" fill="white" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      </button>
+
+      <!-- Barre animate + progress -->
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+        <!-- Barre audio animate -->
+        <div id="waveBars" style="display:flex; align-items:flex-end; gap:3px; height:28px; justify-content:center;">
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:6px;"></div>
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:14px;"></div>
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:20px;"></div>
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:10px;"></div>
+          <div class="bar" style="width:3px; background:var(--arancio); border-radius:2px; height:24px;"></div>
+          <div class="bar" style="width:3px; background:var(--arancio); border-radius:2px; height:16px;"></div>
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:20px;"></div>
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:12px;"></div>
+          <div class="bar" style="width:3px; background:var(--arancio); border-radius:2px; height:18px;"></div>
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:8px;"></div>
+          <div class="bar" style="width:3px; background:var(--verde); border-radius:2px; height:22px;"></div>
+          <div class="bar" style="width:3px; background:var(--arancio); border-radius:2px; height:14px;"></div>
+        </div>
+        <!-- Progress bar -->
+        <div style="position:relative; height:3px; background:rgba(255,255,255,0.12); border-radius:2px; cursor:pointer;" onclick="seek(event, this)">
+          <div id="progressBar" style="height:100%; width:0%; background:linear-gradient(90deg,var(--verde),var(--arancio)); border-radius:2px; transition:width 0.1s linear;"></div>
+        </div>
+      </div>
+
+      <!-- Tempo -->
+      <div style="font-family:var(--font-display); font-size:18px; letter-spacing:2px; color:rgba(255,255,255,0.5); flex-shrink:0; min-width:52px; text-align:right;" id="timeDisplay">0:00</div>
+    </div>
+
+    <p style="font-size:11px; color:rgba(255,255,255,0.2); letter-spacing:2px; text-transform:uppercase;">Alza il volume e canta con noi</p>
+  </div>
+
+  <audio id="innoAudio" src="https://www.venariacalcio.com/wp-content//uploads//2019//09//01-Traccia-1.mp3" preload="none"></audio>
+</section>
+
+<style>
+  @keyframes waveAnim {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+  }
+  .bar { transform-origin: bottom; }
+  .bar.playing { animation: waveAnim 0.6s ease-in-out infinite; }
+  .bar:nth-child(1).playing  { animation-delay: 0s; }
+  .bar:nth-child(2).playing  { animation-delay: 0.1s; }
+  .bar:nth-child(3).playing  { animation-delay: 0.2s; }
+  .bar:nth-child(4).playing  { animation-delay: 0.05s; }
+  .bar:nth-child(5).playing  { animation-delay: 0.15s; }
+  .bar:nth-child(6).playing  { animation-delay: 0.25s; }
+  .bar:nth-child(7).playing  { animation-delay: 0.08s; }
+  .bar:nth-child(8).playing  { animation-delay: 0.18s; }
+  .bar:nth-child(9).playing  { animation-delay: 0.3s; }
+  .bar:nth-child(10).playing { animation-delay: 0.04s; }
+  .bar:nth-child(11).playing { animation-delay: 0.22s; }
+  .bar:nth-child(12).playing { animation-delay: 0.12s; }
+  #playBtn:hover { transform: scale(1.08); background: var(--verde-dark) !important; }
+</style>
+
+<script>
+  const audio = document.getElementById('innoAudio');
+  const playBtn = document.getElementById('playBtn');
+  const iconPlay = document.getElementById('iconPlay');
+  const iconPause = document.getElementById('iconPause');
+  const progressBar = document.getElementById('progressBar');
+  const timeDisplay = document.getElementById('timeDisplay');
+  const bars = document.querySelectorAll('.bar');
+
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      iconPlay.style.display = 'none';
+      iconPause.style.display = 'block';
+      playBtn.style.background = 'var(--arancio)';
+      bars.forEach(b => b.classList.add('playing'));
+    } else {
+      audio.pause();
+      iconPlay.style.display = 'block';
+      iconPause.style.display = 'none';
+      playBtn.style.background = 'var(--verde)';
+      bars.forEach(b => b.classList.remove('playing'));
+    }
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = pct + '%';
+      const m = Math.floor(audio.currentTime / 60);
+      const s = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+      timeDisplay.textContent = m + ':' + s;
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    iconPlay.style.display = 'block';
+    iconPause.style.display = 'none';
+    playBtn.style.background = 'var(--verde)';
+    bars.forEach(b => b.classList.remove('playing'));
+    progressBar.style.width = '0%';
+    timeDisplay.textContent = '0:00';
+  });
+
+  function seek(e, el) {
+    const rect = el.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  }
+</script>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-tagline">
+    <div class="footer-tagline-text">
+      <span style="color:var(--arancio); opacity:1;">VENARIA</span> <span style="color:var(--verde); opacity:1;">REALE</span>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div>
+      <img src="logo.png" alt="ASD Venaria Reale" class="footer-brand-logo">
+      <div class="footer-brand-sub">Calcio · Dal 1947</div>
+      <p class="footer-brand-desc">
+        Associazione Sportiva Dilettantistica con sede a Venaria Reale (TO). Un club, una comunità, una passione. Dal 1947 al servizio del calcio piemontese.
+      </p>
+      <div class="footer-socials">
+        <a href="https://facebook.com/asdvenariareale" class="footer-social-btn" target="_blank" title="Facebook">f</a>
+        <a href="https://instagram.com/venaria_calcio" class="footer-social-btn" target="_blank" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Squadre</div>
+      <ul class="footer-links">
+        <li><a href="#">Prima Squadra</a></li>
+        <li><a href="#">Under 17</a></li>
+        <li><a href="#">Under 15</a></li>
+        <li><a href="#">Under 13</a></li>
+        <li><a href="#">Scuola Calcio</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Club</div>
+      <ul class="footer-links">
+        <li><a href="#">La Storia</a></li>
+        <li><a href="#">Dirigenza</a></li>
+        <li><a href="#">Staff Tecnico</a></li>
+        <li><a href="#">Sponsor</a></li>
+        <li><a href="#">Contatti</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="#">Via San Marchese, 27</a></li>
+        <li><a href="#">10078 Venaria Reale (TO)</a></li>
+        <li><a href="tel:+393397985515">+39 339 798 5515</a></li>
+        <li><a href="mailto:segreteria@venariacalcio.com">segreteria@venariacalcio.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.06); padding:24px 40px; max-width:1280px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div style="font-size:11px; color:rgba(255,255,255,0.3);">
+      © 2025 ASD Venaria Reale · Tutti i diritti riservati · C.F. 97626050013
+    </div>
+    <div style="background:var(--verde); color:white; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 14px; border-radius:3px;">
+      Dal 1947
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+  }
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(10,10,10,0.98)'
+      : 'rgba(10,10,10,0.92)';
+  });
+
+  document.querySelectorAll('.partite-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.partite-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.squadra-card, .maglia-panel, .partita-card, .partner-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
